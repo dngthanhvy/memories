@@ -1,7 +1,10 @@
-import express from 'express';
-import mongoose from 'mongoose';
-import cors from 'cors';
+import dotenv from 'dotenv';
+dotenv.config();
 
-const app = express();
-app.use(express.json());
-app.use(cors());
+import Database from './connections/database.js';
+import Server from './connections/server.js';
+
+const DB_URL = process.env.DB_URL;
+
+Database.connect(DB_URL);
+Server.connect(4001);
